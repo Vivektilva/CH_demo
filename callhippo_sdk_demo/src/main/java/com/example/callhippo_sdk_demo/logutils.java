@@ -12,7 +12,8 @@ public class logutils {
         Log.e(TAG,"manthan");
     }
 
-    public void make_outbound_call()
+    
+    public static void make_outbound_call()
     {
         Log.e(TAG2,"outbound_calling...");
     }
