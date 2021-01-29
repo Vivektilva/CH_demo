@@ -28,6 +28,7 @@ public  class Makeoutgoing_call {
 //Context mcontext;
   public static String TAG_twilio="twiliolog";
   public static String TAG="Makeoutgoing_call";
+    public static String TAG_SDK="CH_SDK";
     private static OnCallhippoCallListener listener;
 
     public static void makeCall(Context mcontext)
@@ -146,8 +147,9 @@ public  class Makeoutgoing_call {
 
             @Override
             public void onRinging(@NonNull com.twilio.voice.Call call) {
-                Log.e(TAG_twilio,"onRinging");
-                Log.e(TAG_twilio+"_pc","3");
+//                Log.e(TAG_twilio,"onRinging");
+                Log.e(TAG_SDK,"onRinging");
+//                Log.e(TAG_twilio+"_pc","3");
                 activeCall=call;
                 listener.OnRinging("CH_SDK_onringing");
                 try
@@ -189,8 +191,9 @@ public  class Makeoutgoing_call {
 
             @Override
             public void onConnected(@NonNull com.twilio.voice.Call call) {
-                Log.e(TAG_twilio,"onConnected");
-                Log.e(TAG_twilio+"_pc","4");
+//                Log.e(TAG_twilio,"onConnected");
+                Log.e(TAG_SDK,"call_connected");
+//                Log.e(TAG_twilio+"_pc","4");
 
                 try
                 {
@@ -210,8 +213,9 @@ public  class Makeoutgoing_call {
 
             @Override
             public void onDisconnected(@NonNull com.twilio.voice.Call call, @Nullable CallException callException) {
-                Log.e(TAG_twilio,"onDisconnected");
-                Log.e(TAG_twilio+"_pc","5");
+//                Log.e(TAG_twilio,"onDisconnected");
+                Log.e(TAG_SDK,"onDisconnected");
+//                Log.e(TAG_twilio+"_pc","5");
                 // call hangup after connected
 
                 try
@@ -236,4 +240,14 @@ public  class Makeoutgoing_call {
         };
 
     }
+    public static void hangupOngoingCall()
+    {
+//        Log.e(TAG,"hangup_fromsdk");
+        tw_call_hangup();
+    }
+    public static void tw_call_hangup()
+    {
+        try{activeCall.disconnect();}catch (Exception e){}
+    }
+
 }
